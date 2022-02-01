@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:newproj/widgets/common_post_widget.dart';
 
 class InstagramListScreen extends StatelessWidget {
   final userImage =
@@ -8,137 +10,114 @@ class InstagramListScreen extends StatelessWidget {
       "https://cdn.pixabay.com/photo/2021/11/06/16/11/greece-6773683_960_720.jpg";
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Container(
-                            height: 45,
-                            width: 45,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.green,
-                            ),
-                            child: Image.network(userImage, fit: BoxFit.cover),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "glitterglue",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return Container(
-                              height: 500,
-                              color: Colors.green,
-                            );
-                          },
-                        );
-                      },
-                      child: Icon(Icons.more_horiz),
-                    ),
-                  ]),
-            ),
-            GestureDetector(
-              onDoubleTap: () {
-                print("I am liked with double tap");
-              },
-              child: Container(
-                height: 500,
-                child: Image.network(
-                  postImage,
-                  width: screenWidth,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onLongPress: () {
-                          print("I am long pressed");
-                        },
-                        child: Icon(
-                          Icons.favorite_border,
-                          size: 35,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      GestureDetector(
-                        onTap: () {
-                          print("I am pressed with GEsture detector");
-                        },
-                        child: Icon(
-                          Fontisto.comment,
-                          size: 32,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      InkWell(
-                        onTap: () {
-                          print("I am pressed with Inkwell");
-                        },
-                        child: Icon(
-                          Feather.send,
-                          size: 32,
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Feather.send,
-                          size: 32,
-                        ),
-                        onPressed: () {
-                          print("send pressed from Icon button");
-                        },
-                      )
-                    ],
-                  ),
-                  Icon(
-                    FontAwesome.bookmark_o,
-                    size: 35,
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text("Beautifyl Sea", style: TextStyle(fontSize: 16)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text("View all comments",
-                  style: TextStyle(fontSize: 14, color: Colors.grey)),
-            )
-          ],
+      appBar: AppBar(
+        leading: Icon(
+          Entypo.camera,
+          color: Colors.black,
+          size: 30,
         ),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        centerTitle: true,
+        title: Text("Instagram",
+            style: GoogleFonts.dancingScript(
+              textStyle: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                Icon(
+                  Icons.tv_outlined,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                Positioned(
+                  right: 0,
+                  // top: 2,
+                  child: Container(
+                    height: 15,
+                    width: 15,
+                    decoration: BoxDecoration(
+                        color: Colors.red, shape: BoxShape.circle),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            // color: Colors.green,
+            width: 60,
+            child: Stack(
+              children: [
+                Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Feather.send,
+                      color: Colors.black,
+                      size: 30,
+                    )),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    height: 25,
+                    width: 25,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.red),
+                    child: Text(
+                      "3",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          )
+        ],
+      ),
+      body:
+
+          //  Column(
+          //   children: [
+          //     // Container(
+          //     //   child: Stack(
+          //     //     children: [
+          //     //       Container(
+          //     //         height: 500,
+          //     //         // width: 200,
+          //     //         color: Colors.black.withOpacity(0.8),
+          //     //       ),
+          //     //       Container(
+          //     //         color: Colors.red,
+          //     //         height: 500,
+          //     //         child: Image.network(postImage),
+          //     //       ),
+          //     //       Positioned(top: 10, child: Icon(Icons.home, size: 45)),
+          //     //     ],
+          //     //   ),
+          //     // )
+          //   ],
+          // )
+
+          ListView(
+        children: [
+          CommonPostWidget(userImage: userImage, postImage: postImage),
+          CommonPostWidget(userImage: userImage, postImage: postImage),
+          CommonPostWidget(userImage: userImage, postImage: postImage),
+          CommonPostWidget(userImage: userImage, postImage: postImage),
+          CommonPostWidget(userImage: userImage, postImage: postImage),
+          CommonPostWidget(userImage: userImage, postImage: postImage),
+        ],
       ),
     );
   }
